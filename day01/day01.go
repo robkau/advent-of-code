@@ -16,9 +16,9 @@ const (
 	InputDataUrl = "https://adventofcode.com/2018/day/1/input"
 )
 
-func applyFrequencyChanges(baseFrequency int64, frequencyChanges []string) int64 {
+func applyFrequencyChanges(baseFrequency int, frequencyChanges []string) int {
 	for _, fc := range frequencyChanges {
-		f, err := strconv.ParseInt(fc, 10, 0)
+		f, err := strconv.Atoi(fc)
 		if err != nil {
 			fmt.Println("Failed to convert input string to int")
 			panic(err)
@@ -28,9 +28,9 @@ func applyFrequencyChanges(baseFrequency int64, frequencyChanges []string) int64
 	return baseFrequency
 }
 
-func findFirstFrequencyCollision(baseFrequency int64, frequencyChanges []string) int64 {
+func findFirstFrequencyCollision(baseFrequency int, frequencyChanges []string) int {
 	var Present struct{}
-	visitedFrequencies := make(map[int64]struct{})
+	visitedFrequencies := make(map[int]struct{})
 
 	for {
 		for _, fc := range frequencyChanges {
@@ -40,7 +40,7 @@ func findFirstFrequencyCollision(baseFrequency int64, frequencyChanges []string)
 				return baseFrequency
 			}
 			// todo: improve speed by only parsing input list once
-			f, err := strconv.ParseInt(fc, 10, 0)
+			f, err := strconv.Atoi(fc)
 			if err != nil {
 				fmt.Println("Failed to convert input string to int")
 				panic(err)
@@ -66,7 +66,7 @@ func main() {
 
 	// Strategy:
 	// initialize frequency and then then add or subtract each frequency change
-	var baseFrequency int64 = 0
+	var baseFrequency int = 0
 	finalFrequency := applyFrequencyChanges(baseFrequency, inputs)
 
 	// Answer:
