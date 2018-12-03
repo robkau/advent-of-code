@@ -25,7 +25,7 @@ https://adventofcode.com/2018/day/1
  
 
 
-*Example Output:*
+*Example Usage:*
  ````cgo
 export aoc_session_cookie=xxxxxxxxxxxxxxx
 ./day01
