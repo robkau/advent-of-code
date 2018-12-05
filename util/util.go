@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"strconv"
+	"time"
 )
 
 const (
@@ -22,7 +23,7 @@ func HttpRequestWithCookie(url string, method string, cookieName string, cookieV
 
 	req.AddCookie(&http.Cookie{Name: cookieName, Value: cookieVal})
 
-	client := &http.Client{}
+	client := &http.Client{Timeout: time.Duration(10 * time.Second)}
 	resp, err := client.Do(req)
 	if err != nil {
 		return
