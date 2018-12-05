@@ -41,6 +41,7 @@ func containsNOccurrences(input string, n int) bool {
 }
 
 func roughlyEqual(a string, b string, allowedErrors int) bool {
+	// returns true if a and b differ by , at most, allowedErrors characters
 	if len(a) != len(b) {
 		return false
 	}
